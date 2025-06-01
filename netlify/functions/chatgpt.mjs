@@ -1,11 +1,9 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+import fetch from 'node-fetch';
 
-
-exports.handler = async function (event) {
+export async function handler(event) {
   console.log("🔐 OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
 
-  
-  const body = JSON.parse(event.body)
+  const body = JSON.parse(event.body || '{}');
   const userMessage = body.message;
 
   try {
@@ -32,8 +30,6 @@ exports.handler = async function (event) {
     });
 
     const data = await response.json();
-    console.log("🔐 OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
- // ✅ Debugging log
 
     const botReply = data.choices?.[0]?.message?.content || "Sorry, I couldn't understand. Try rephrasing.";
 
@@ -49,4 +45,4 @@ exports.handler = async function (event) {
       body: JSON.stringify({ reply: 'Error reaching AI. Please try again later.' })
     };
   }
-};
+}
