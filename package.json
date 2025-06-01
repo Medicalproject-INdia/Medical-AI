@@ -1,0 +1,10 @@
+{
+  "name": "medicalai-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for Medical AI Chatbot",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
