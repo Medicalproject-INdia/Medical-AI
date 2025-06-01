@@ -30,6 +30,7 @@ export async function handler(event) {
     });
 
     const data = await response.json();
+    console.log("🔄 FULL OPENAI RESPONSE:", data); 
 
     const botReply = data.choices?.[0]?.message?.content || "Sorry, I couldn't understand. Try rephrasing.";
 
