@@ -1,4 +1,4 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 export const handler = async function (event) {
   console.log("🔐 GROQ_API_KEY:", process.env.GROQ_API_KEY);
@@ -14,7 +14,7 @@ export const handler = async function (event) {
         'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'mixtral-8x7b-32768',
+        model: 'llama3-70b-8192',  // ✅ Updated model
         messages: [
           {
             role: 'system',
