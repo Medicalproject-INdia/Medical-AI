@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Health Chatbot</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f9ff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2196f3;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .chat-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .message {
+      padding: 0.7rem 1rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      max-width: 75%;
+      line-height: 1.4;
+    }
+
+    .message.user {
+      background-color: #d0f0ff;
+      align-self: flex-end;
+    }
+
+    .message.bot {
+      background-color: #e7f4ea;
+      align-self: flex-start;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+      padding: 0.8rem;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .chat-input button {
+      padding: 0.6rem 1.2rem;
+      margin-left: 0.5rem;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #1976d2;
+    }
+
+    @media (max-width: 600px) {
+      .chat-container {
+        margin: 1rem;
+        height: 85vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>AI Health Assistant</h1>
+  <p>Ask your health-related questions</p>
+</header>
+
+<div class="chat-container">
+  <div id="chatBody" class="chat-body">
+    <div class="message bot">Hello! I’m your AI health assistant. Ask me anything about symptoms, diseases, or common treatments.</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="userInput" placeholder="Type your message..." onkeydown="if(event.key === 'Enter') sendMessage()" />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<!-- ✅ Chatbot JS to call OpenAI through Netlify Functions -->
+<script>
+  async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    const chatBody = document.getElementById('chatBody');
+    chatBody.innerHTML += `<div class="message user">${message}</div>`;
+
+    input.value = "";
+
+    // Show "typing..." while AI replies
+    chatBody.innerHTML += `<div class="message bot" id="loading">Typing...</div>`;
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    try {
+      const res = await fetch('/.netlify/functions/chatgpt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })
+      });
+
+      const data = await res.json();
+      document.getElementById('loading').remove();
+      chatBody.innerHTML += `<div class="message bot">${data.reply}</div>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+    } catch (err) {
+      document.getElementById('loading').remove();
+      chatBody.innerHTML += `<div class="message bot">Error reaching AI. Please try again later.</div>`;
+    }
+  }
+</script>
+
+</body>
+</html>

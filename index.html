@@ -1,0 +1,68 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediCare AI - Home</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <h1>MediCare AI</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chatbot.html">Chatbot</a></li>
+        <li><a href="diseases.html">Disease Info</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><button id="toggle-theme">Toggle Theme</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Search Bar Section -->
+  <section class="search-section">
+    <!-- This is the search bar to find diseases -->
+    <input type="text" placeholder="Search for a disease or symptoms..." id="search-box" />
+  </section>
+
+  <!-- Featured Diseases -->
+  <section class="featured-diseases">
+    <!-- This section will show common diseases -->
+    <h2>Common Diseases</h2>
+    <div class="disease-list">
+      <!-- Each box will represent a disease -->
+      <div class="disease-box">Breast Cancer</div>
+      <div class="disease-box">Diabetes</div>
+      <div class="disease-box">Covid-19</div>
+      <div class="disease-box">Cancer</div>
+      <div class="disease-box">Hypertension</div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="articles">
+    <!-- Articles related to health awareness -->
+    <h2>Latest Health Articles</h2>
+    <p>Coming soon...</p>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What People Say</h2>
+    <p>Coming soon...</p>
+  </section>
+
+  <!-- Chatbot Bubble (this will be a pop-up type) -->
+  <div id="chatbot-button">
+    <!-- This is the chatbot bubble button -->
+    💬 Chat with MediBot
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
