@@ -1,20 +1,20 @@
-import fetch from 'node-fetch';
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-export async function handler(event) {
-  console.log("🔐 OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
+export const handler = async function (event) {
+  console.log("🔐 GROQ_API_KEY:", process.env.GROQ_API_KEY);
 
-  const body = JSON.parse(event.body || '{}');
+  const body = JSON.parse(event.body);
   const userMessage = body.message;
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'mixtral-8x7b-32768',
         messages: [
           {
             role: 'system',
@@ -30,7 +30,7 @@ export async function handler(event) {
     });
 
     const data = await response.json();
-    console.log("🔄 FULL OPENAI RESPONSE:", data); 
+    console.log("🔄 FULL GROQ RESPONSE:", JSON.stringify(data));
 
     const botReply = data.choices?.[0]?.message?.content || "Sorry, I couldn't understand. Try rephrasing.";
 
@@ -40,10 +40,10 @@ export async function handler(event) {
     };
 
   } catch (error) {
-    console.error('OpenAI API error:', error);
+    console.error('Groq API error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ reply: 'Error reaching AI. Please try again later.' })
     };
   }
-}
+};
