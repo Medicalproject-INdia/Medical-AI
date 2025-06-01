@@ -17,6 +17,7 @@
       <a href="#" class="hover:text-blue-600">About</a>
       <a href="#" class="hover:text-blue-600">Services</a>
       <a href="#" class="hover:text-blue-600">Contact</a>
+      <a href="chatbot.html" class="hover:text-blue-600 font-semibold">Chat with AI</a>
     </div>
   </nav>
 
@@ -40,30 +41,23 @@
       <!-- Options -->
       <div class="flex gap-4 mt-6">
         <div class="flex-1 p-4 bg-blue-100 rounded-lg text-center">
-          <div class="text-2xl mb-2">
-            👨‍⚕️
-          </div>
+          <div class="text-2xl mb-2">👨‍⚕️</div>
           <div class="font-semibold">Find a Doctor</div>
         </div>
         <div class="flex-1 p-4 bg-blue-100 rounded-lg text-center">
-          <div class="text-2xl mb-2">
-            🏠
-          </div>
+          <div class="text-2xl mb-2">🏠</div>
           <div class="font-semibold">Book an Appointment</div>
         </div>
       </div>
     </div>
 
-    <!-- Doctor Image Placeholder -->
+    <!-- Doctor Image -->
     <div class="flex-1 hidden lg:block">
-<img src="https://raw.githubusercontent.com/Medicalproject-INdia/Medical-AI/main/doctor.png" alt="Doctor" class="w-full max-w-sm mx-auto" />
-
-
-</div>
-
+      <img src="https://raw.githubusercontent.com/Medicalproject-INdia/Medical-AI/main/doctor.png" alt="Doctor" class="w-full max-w-sm mx-auto" />
+    </div>
   </section>
 
-  <!-- Diseases Section (Replacing About Us) -->
+  <!-- Diseases Section -->
   <section class="bg-blue-100 py-6 px-4">
     <h2 class="text-2xl font-bold text-blue-800 mb-4">Diseases</h2>
     <ul class="list-disc pl-6 text-gray-700 space-y-1">
@@ -79,5 +73,48 @@
       <li>Malaria</li>
     </ul>
   </section>
+
+  <!-- Floating AI Chatbot Button -->
+  <button id="chatbot-btn" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2563EB;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999;
+  ">
+    💬
+  </button>
+
+  <!-- Chatbot Popup -->
+  <div id="chatbot-popup" style="
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+  ">
+    <iframe src="chatbot.html" style="width:100%; height:100%; border:none;"></iframe>
+  </div>
+
+  <script>
+    const btn = document.getElementById("chatbot-btn");
+    const popup = document.getElementById("chatbot-popup");
+    btn.onclick = () => {
+      popup.style.display = popup.style.display === "none" ? "block" : "none";
+    };
+  </script>
 </body>
 </html>
