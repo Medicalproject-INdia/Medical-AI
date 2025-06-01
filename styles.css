@@ -1,0 +1,167 @@
+/* styles.css */
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Light Theme */
+body {
+  background-color: #f5faff; /* light blue background */
+  color: #333;
+}
+
+header {
+  background-color: #0077cc;
+  color: white;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a,
+nav ul li button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Search Bar */
+.search-section {
+  padding: 1rem;
+  text-align: center;
+}
+
+#search-box {
+  padding: 0.5rem;
+  width: 80%;
+  max-width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Disease Boxes */
+.featured-diseases {
+  padding: 2rem;
+  text-align: center;
+}
+
+.disease-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.disease-box {
+  background-color: #e0f0ff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+}
+
+/* Chatbot Bubble */
+#chatbot-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0077cc;
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Dark Theme */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode header {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .disease-box {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode #chatbot-button {
+  background-color: #444;
+}
+
+/* Disease Page Styles */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.disease-box {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.center {
+  text-align: center;
+  margin: 20px;
+}
+
+/* 🌗 Toggle Button Styling */
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 14px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #0056b3;
+}
+
+/* 🌑 DARK THEME STYLES */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .disease-box {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333;
+}
+
+body.dark-mode .section-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .theme-toggle-btn {
+  background-color: #444;
+  color: #f0f0f0;
+}
