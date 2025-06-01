@@ -27,7 +27,9 @@ exports.handler = async function (event) {
       })
     });
 
-    const data = await response.json();
+   const data = await response.json();
+console.log("OpenAI API Response:", data);
+
 
     const botReply = data.choices?.[0]?.message?.content || "Sorry, I couldn't understand. Try rephrasing.";
 
