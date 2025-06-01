@@ -8,7 +8,7 @@ exports.handler = async function (event) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+      'Authorization': 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`}
 
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
