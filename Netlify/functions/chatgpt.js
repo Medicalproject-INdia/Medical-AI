@@ -4,17 +4,21 @@ exports.handler = async function (event) {
   const body = JSON.parse(event.body);
   const userMessage = body.message;
 
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
-      const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
-      'Authorization': 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`}
-
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${OPENAI_API_KEY}`
+    },
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: 'You are a helpful health assistant. Only answer disease-related queries, symptoms, suggestions, and provide common advice. Avoid serious diagnosis. Suggest articles or simple medicines if safe.' },
+        {
+          role: 'system',
+          content: 'You are a helpful health assistant. Only answer disease-related queries, symptoms, suggestions, and provide common advice. Avoid serious diagnosis. Suggest articles or simple medicines if safe.'
+        },
         { role: 'user', content: userMessage }
       ],
       temperature: 0.7
@@ -22,6 +26,7 @@ exports.handler = async function (event) {
   });
 
   const data = await response.json();
+
   const botReply = data.choices?.[0]?.message?.content || "Sorry, I couldn't understand. Try rephrasing.";
 
   return {
@@ -29,4 +34,3 @@ exports.handler = async function (event) {
     body: JSON.stringify({ reply: botReply })
   };
 };
-
