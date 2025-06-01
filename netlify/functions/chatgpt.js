@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 
 exports.handler = async function (event) {
   console.log("🔐 OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
