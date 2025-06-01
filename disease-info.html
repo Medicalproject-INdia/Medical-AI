@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disease Info | MediCare AI</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    /* Base */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f2f9ff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #007bff;
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Page title */
+    h2.center {
+      text-align: center;
+      margin-top: 30px;
+      color: #007bff;
+    }
+
+    /* Search bar */
+    #searchInput {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 15px;
+      width: 60%;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      outline: none;
+    }
+
+    /* Container for disease cards */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Each disease card */
+    .disease-box {
+      background-color: #e9f4ff;
+      border-left: 5px solid #007bff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .disease-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .disease-box h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .disease-box p {
+      margin: 5px 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      #searchInput {
+        width: 85%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- 🌗 Dark Mode Toggle Button -->
+<button id="themeToggle" class="theme-toggle-btn">🌙 Toggle Theme</button>
+
+
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <h1>MediCare AI</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="chatbot.html">Chatbot</a>
+      <a href="disease-info.html">Disease Info</a>
+      <a href="about.html">About</a>
+      <a href="help.html">Help</a>
+    </nav>
+  </div>
+
+  <!-- Page Heading -->
+  <h2 class="center">Disease Information</h2>
+
+  <!-- Search Bar -->
+  <input type="text" id="searchInput" placeholder="Search diseases..." onkeyup="filterDiseases()"/>
+
+  <!-- Disease Cards -->
+  <div class="container" id="diseaseList">
+    <!-- Disease List Section -->
+<section class="disease-section">
+  <h2 class="section-title">Disease Information</h2>
+
+  <!-- 💡 Flex container for disease cards -->
+  <div id="diseaseList" class="disease-list">
+    
+    <!-- 💙 Disease 1 -->
+    <div class="disease-box">
+      <h3>Breast Cancer</h3>
+      <p><strong>Symptoms:</strong> Lump in breast, change in size, pain.</p>
+      <p><strong>Causes:</strong> Genetic mutations, age, lifestyle.</p>
+      <p><strong>Treatment:</strong> Surgery, chemotherapy, radiation.</p>
+      <p><strong>Prevention:</strong> Regular screening, healthy lifestyle.</p>
+    </div>
+
+    <!-- 💙 Disease 2 -->
+    <div class="disease-box">
+      <h3>Diabetes</h3>
+      <p><strong>Symptoms:</strong> Increased thirst, frequent urination, fatigue.</p>
+      <p><strong>Causes:</strong> Insulin resistance, genetics, obesity.</p>
+      <p><strong>Treatment:</strong> Insulin, lifestyle changes, medication.</p>
+      <p><strong>Prevention:</strong> Healthy diet, exercise, weight management.</p>
+    </div>
+
+    <!-- 💙 Disease 3 -->
+    <div class="disease-box">
+      <h3>Covid-19</h3>
+      <p><strong>Symptoms:</strong> Fever, cough, shortness of breath, fatigue.</p>
+      <p><strong>Causes:</strong> Coronavirus (SARS-CoV-2) infection.</p>
+      <p><strong>Treatment:</strong> Rest, hydration, antiviral drugs (severe cases).</p>
+      <p><strong>Prevention:</strong> Vaccination, mask, hand hygiene.</p>
+    </div>
+
+    <!-- 💙 Disease 4 -->
+    <div class="disease-box">
+      <h3>Cancer</h3>
+      <p><strong>Symptoms:</strong> Varies by type; weight loss, fatigue, lumps.</p>
+      <p><strong>Causes:</strong> Genetic mutations, environmental factors.</p>
+      <p><strong>Treatment:</strong> Surgery, chemotherapy, radiation, immunotherapy.</p>
+      <p><strong>Prevention:</strong> Healthy lifestyle, regular screening.</p>
+    </div>
+
+    <!-- 💙 Disease 5 -->
+    <div class="disease-box">
+      <h3>Hypertension</h3>
+      <p><strong>Symptoms:</strong> Often none; sometimes headache, dizziness.</p>
+      <p><strong>Causes:</strong> Obesity, genetics, high salt intake.</p>
+      <p><strong>Treatment:</strong> Lifestyle changes, blood pressure medications.</p>
+      <p><strong>Prevention:</strong> Healthy diet, exercise, low sodium.</p>
+    </div>
+
+    <!-- 💙 Disease 6 -->
+    <div class="disease-box">
+      <h3>Asthma</h3>
+      <p><strong>Symptoms:</strong> Wheezing, coughing, shortness of breath.</p>
+      <p><strong>Causes:</strong> Allergens, pollution, genetics.</p>
+      <p><strong>Treatment:</strong> Inhalers, steroids, avoid triggers.</p>
+      <p><strong>Prevention:</strong> Allergen control, medications.</p>
+    </div>
+
+    <!-- 💙 Disease 7 -->
+    <div class="disease-box">
+      <h3>Malaria</h3>
+      <p><strong>Symptoms:</strong> Fever, chills, vomiting, headache.</p>
+      <p><strong>Causes:</strong> Plasmodium parasites via mosquito bites.</p>
+      <p><strong>Treatment:</strong> Antimalarial drugs.</p>
+      <p><strong>Prevention:</strong> Mosquito nets, repellents, prophylactic meds.</p>
+    </div>
+
+    <!-- 💙 Disease 8 -->
+    <div class="disease-box">
+      <h3>Dengue</h3>
+      <p><strong>Symptoms:</strong> High fever, rash, joint pain, bleeding.</p>
+      <p><strong>Causes:</strong> Dengue virus via Aedes mosquito.</p>
+      <p><strong>Treatment:</strong> Fluids, pain relievers (no aspirin), hospital care.</p>
+      <p><strong>Prevention:</strong> Avoid mosquito bites, eliminate breeding areas.</p>
+    </div>
+
+    <!-- 💙 Disease 9 -->
+    <div class="disease-box">
+      <h3>Typhoid</h3>
+      <p><strong>Symptoms:</strong> Fever, weakness, stomach pain, rash.</p>
+      <p><strong>Causes:</strong> Bacteria (Salmonella typhi) via contaminated food/water.</p>
+      <p><strong>Treatment:</strong> Antibiotics, fluids, rest.</p>
+      <p><strong>Prevention:</strong> Safe drinking water, hygiene, vaccination.</p>
+    </div>
+
+    <!-- 💙 Disease 10 -->
+    <div class="disease-box">
+      <h3>Cholera</h3>
+      <p><strong>Symptoms:</strong> Severe diarrhea, dehydration, weakness.</p>
+      <p><strong>Causes:</strong> Vibrio cholerae bacteria from dirty water.</p>
+      <p><strong>Treatment:</strong> ORS, IV fluids, antibiotics (severe cases).</p>
+      <p><strong>Prevention:</strong> Clean water, sanitation, hand washing.</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- JS to Filter Cards -->
+  <script>
+    function filterDiseases() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".disease-box");
+      cards.forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(input) ? "block" : "none";
+      });
+    }
+  </script>
+
+  <script>
+  // 🌗 Toggle dark/light mode on button click
+  const toggleBtn = document.getElementById('themeToggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Optionally save preference in local storage
+    const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', mode);
+  });
+
+  // 🧠 Load saved theme on refresh
+  window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  });
+</script>
+
+
+</body>
+</html>
