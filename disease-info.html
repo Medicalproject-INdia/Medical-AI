@@ -2,115 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Disease Information</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disease Info</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
+      font-family: 'Inter', sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f6f8fc;
+      padding: 0;
+      background: #f4f6fc;
     }
-
-    header {
-      background-color: #0a58ca;
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
     h1 {
-      font-size: 2rem;
-      color: #1a2a6c;
-      margin-bottom: 1rem;
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 2.5rem;
     }
-
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-
     .card {
-      background-color: #ffffff;
+      background: #fff;
       border-radius: 16px;
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 20px;
       text-align: center;
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+      position: relative;
     }
-
     .card:hover {
       transform: translateY(-5px);
     }
-
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: #d8eafe;
+      border-radius: 50%;
+      z-index: 0;
+    }
     .card img {
       width: 80px;
       height: 80px;
       object-fit: contain;
-      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
     }
-
-    .card p {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1a2a6c;
+    .card h3 {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      display: none;
+    }
+    .popup {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      animation: fadeIn 0.4s ease;
+    }
+    .popup h2 {
+      margin-top: 0;
+    }
+    .popup section {
+      margin: 15px 0;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
-  <header>Disease Information</header>
+  <h1>Diseases</h1>
+  <div class="grid" id="diseaseGrid">
+    <div class="card" onclick="openPopup('diabetes')">
+      <img src="https://img.icons8.com/color/96/diabetes.png" alt="Diabetes" />
+      <h3>Diabetes</h3>
+    </div>
+    <div class="card" onclick="openPopup('heart')">
+      <img src="https://img.icons8.com/color/96/heart-health.png" alt="Heart Disease" />
+      <h3>Heart Disease</h3>
+    </div>
+    <div class="card" onclick="openPopup('asthma')">
+      <img src="https://img.icons8.com/color/96/asthma-inhaler.png" alt="Asthma" />
+      <h3>Asthma</h3>
+    </div>
+    <div class="card" onclick="openPopup('arthritis')">
+      <img src="https://img.icons8.com/color/96/joint-pain.png" alt="Arthritis" />
+      <h3>Arthritis</h3>
+    </div>
+    <!-- Add more cards as needed -->
+  </div>
 
-  <div class="container">
-    <h1>Diseases</h1>
-    <div class="grid">
-      <div class="card">
-        <img src="images/diabetes.png" alt="Diabetes" />
-        <p>Diabetes</p>
-      </div>
-      <div class="card">
-        <img src="images/heart.png" alt="Heart Disease" />
-        <p>Heart Disease</p>
-      </div>
-      <div class="card">
-        <img src="images/asthma.png" alt="Asthma" />
-        <p>Asthma</p>
-      </div>
-      <div class="card">
-        <img src="images/arthritis.png" alt="Arthritis" />
-        <p>Arthritis</p>
-      </div>
-      <div class="card">
-        <img src="images/covid.png" alt="COVID-19" />
-        <p>COVID-19</p>
-      </div>
-      <div class="card">
-        <img src="images/flu.png" alt="Flu" />
-        <p>Flu</p>
-      </div>
-      <div class="card">
-        <img src="images/hypertension.png" alt="Hypertension" />
-        <p>Hypertension</p>
-      </div>
-      <div class="card">
-        <img src="images/malaria.png" alt="Malaria" />
-        <p>Malaria</p>
-      </div>
-      <div class="card">
-        <img src="images/typhoid.png" alt="Typhoid" />
-        <p>Typhoid</p>
-      </div>
-      <div class="card">
-        <img src="images/dengue.png" alt="Dengue" />
-        <p>Dengue</p>
-      </div>
+  <div class="overlay" id="popupOverlay">
+    <div class="popup" id="popupContent">
+      <button class="close-btn" onclick="closePopup()">&times;</button>
+      <h2 id="popupTitle">Disease Name</h2>
+      <section><strong>Description:</strong> <p id="descText"></p></section>
+      <section><strong>Symptoms:</strong> <p id="symptomText"></p></section>
+      <section><strong>Prevention:</strong> <p id="preventText"></p></section>
+      <section><strong>Treatment:</strong> <p id="treatText"></p></section>
     </div>
   </div>
+
+  <script>
+    const data = {
+      diabetes: {
+        title: "Diabetes",
+        desc: "A chronic condition that affects how your body turns food into energy.",
+        symptoms: "Increased thirst, frequent urination, fatigue, blurred vision.",
+        prevention: "Healthy eating, regular physical activity, maintaining a healthy weight.",
+        treatment: "Insulin therapy, oral medications, monitoring blood sugar levels."
+      },
+      heart: {
+        title: "Heart Disease",
+        desc: "A range of conditions that affect your heart, including blood vessel diseases.",
+        symptoms: "Chest pain, shortness of breath, fatigue.",
+        prevention: "Quit smoking, eat a heart-healthy diet, exercise regularly.",
+        treatment: "Medications, surgery, lifestyle changes."
+      },
+      asthma: {
+        title: "Asthma",
+        desc: "A condition in which your airways narrow and swell and may produce extra mucus.",
+        symptoms: "Shortness of breath, chest tightness, wheezing, coughing.",
+        prevention: "Avoid triggers, use preventive medications, follow a treatment plan.",
+        treatment: "Inhalers, steroids, bronchodilators."
+      },
+      arthritis: {
+        title: "Arthritis",
+        desc: "Inflammation of one or more of your joints, causing pain and stiffness.",
+        symptoms: "Joint pain, stiffness, swelling, decreased range of motion.",
+        prevention: "Maintain a healthy weight, avoid joint injuries, exercise.",
+        treatment: "Pain relievers, physical therapy, joint replacement in severe cases."
+      }
+    };
+
+    function openPopup(diseaseKey) {
+      const info = data[diseaseKey];
+      document.getElementById("popupTitle").innerText = info.title;
+      document.getElementById("descText").innerText = info.desc;
+      document.getElementById("symptomText").innerText = info.symptoms;
+      document.getElementById("preventText").innerText = info.prevention;
+      document.getElementById("treatText").innerText = info.treatment;
+      document.getElementById("popupOverlay").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popupOverlay").style.display = "none";
+    }
+  </script>
 </body>
 </html>
