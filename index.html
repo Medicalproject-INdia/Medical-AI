@@ -6,6 +6,29 @@
   <title>Medical Homepage</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+
+    .card::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  background: #d8eafe;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.card img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+}
+
     /* Ensure AI button does not overlap navbar */
     .ai-btn-container {
       top: 1rem;
