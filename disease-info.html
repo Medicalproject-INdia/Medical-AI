@@ -85,12 +85,18 @@
       max-width: 600px;
       position: relative;
       animation: fadeIn 0.4s ease;
+      text-align: center;
     }
     .popup h2 {
       margin-top: 0;
     }
     .popup section {
       margin: 15px 0;
+    }
+    .popup img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
     }
     .close-btn {
       position: absolute;
@@ -126,12 +132,12 @@
       <img src="https://img.icons8.com/color/96/joint-pain.png" alt="Arthritis" />
       <h3>Arthritis</h3>
     </div>
-    <!-- Add more cards as needed -->
   </div>
 
   <div class="overlay" id="popupOverlay">
     <div class="popup" id="popupContent">
       <button class="close-btn" onclick="closePopup()">&times;</button>
+      <img id="popupIcon" src="" alt="Disease Icon" />
       <h2 id="popupTitle">Disease Name</h2>
       <section><strong>Description:</strong> <p id="descText"></p></section>
       <section><strong>Symptoms:</strong> <p id="symptomText"></p></section>
@@ -144,6 +150,7 @@
     const data = {
       diabetes: {
         title: "Diabetes",
+        icon: "https://img.icons8.com/color/96/diabetes.png",
         desc: "A chronic condition that affects how your body turns food into energy.",
         symptoms: "Increased thirst, frequent urination, fatigue, blurred vision.",
         prevention: "Healthy eating, regular physical activity, maintaining a healthy weight.",
@@ -151,6 +158,7 @@
       },
       heart: {
         title: "Heart Disease",
+        icon: "https://img.icons8.com/color/96/heart-health.png",
         desc: "A range of conditions that affect your heart, including blood vessel diseases.",
         symptoms: "Chest pain, shortness of breath, fatigue.",
         prevention: "Quit smoking, eat a heart-healthy diet, exercise regularly.",
@@ -158,6 +166,7 @@
       },
       asthma: {
         title: "Asthma",
+        icon: "https://img.icons8.com/color/96/asthma-inhaler.png",
         desc: "A condition in which your airways narrow and swell and may produce extra mucus.",
         symptoms: "Shortness of breath, chest tightness, wheezing, coughing.",
         prevention: "Avoid triggers, use preventive medications, follow a treatment plan.",
@@ -165,6 +174,7 @@
       },
       arthritis: {
         title: "Arthritis",
+        icon: "https://img.icons8.com/color/96/joint-pain.png",
         desc: "Inflammation of one or more of your joints, causing pain and stiffness.",
         symptoms: "Joint pain, stiffness, swelling, decreased range of motion.",
         prevention: "Maintain a healthy weight, avoid joint injuries, exercise.",
@@ -175,6 +185,8 @@
     function openPopup(diseaseKey) {
       const info = data[diseaseKey];
       document.getElementById("popupTitle").innerText = info.title;
+      document.getElementById("popupIcon").src = info.icon;
+      document.getElementById("popupIcon").alt = info.title;
       document.getElementById("descText").innerText = info.desc;
       document.getElementById("symptomText").innerText = info.symptoms;
       document.getElementById("preventText").innerText = info.prevention;
