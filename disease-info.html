@@ -1,3 +1,4 @@
+<!-- Full Updated disease-info.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,8 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
       background: #f4f6fc;
+      margin: 0;
     }
     h1 {
       text-align: center;
@@ -71,11 +71,10 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(6px);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      display: none;
     }
     .popup {
       background: white;
@@ -83,20 +82,20 @@
       border-radius: 20px;
       width: 90%;
       max-width: 600px;
-      position: relative;
       animation: fadeIn 0.4s ease;
       text-align: center;
+      position: relative;
+    }
+    .popup img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
     }
     .popup h2 {
       margin-top: 0;
     }
     .popup section {
       margin: 15px 0;
-    }
-    .popup img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 15px;
     }
     .close-btn {
       position: absolute;
@@ -115,25 +114,9 @@
 </head>
 <body>
   <h1>Diseases</h1>
-  <div class="grid" id="diseaseGrid">
-    <div class="card" onclick="openPopup('diabetes')">
-      <img src="https://img.icons8.com/color/96/diabetes.png" alt="Diabetes" />
-      <h3>Diabetes</h3>
-    </div>
-    <div class="card" onclick="openPopup('heart')">
-      <img src="https://img.icons8.com/color/96/heart-health.png" alt="Heart Disease" />
-      <h3>Heart Disease</h3>
-    </div>
-    <div class="card" onclick="openPopup('asthma')">
-      <img src="https://img.icons8.com/color/96/asthma-inhaler.png" alt="asthma" />
-      <h3>Asthma</h3>
-    </div>
-    <div class="card" onclick="openPopup('arthritis')">
-      <img src="https://img.icons8.com/color/96/joint-pain.png" alt="arthritis" />
-      <h3>Arthritis</h3>
-    </div>
-  </div>
+  <div class="grid" id="diseaseGrid"></div>
 
+  <!-- Popup -->
   <div class="overlay" id="popupOverlay">
     <div class="popup" id="popupContent">
       <button class="close-btn" onclick="closePopup()">&times;</button>
@@ -147,50 +130,108 @@
   </div>
 
   <script>
-    const data = {
+    const diseases = {
       diabetes: {
         title: "Diabetes",
         icon: "https://img.icons8.com/color/96/diabetes.png",
         desc: "A chronic condition that affects how your body turns food into energy.",
-        symptoms: "Increased thirst, frequent urination, fatigue, blurred vision.",
-        prevention: "Healthy eating, regular physical activity, maintaining a healthy weight.",
-        treatment: "Insulin therapy, oral medications, monitoring blood sugar levels."
+        symptoms: "Increased thirst, frequent urination, fatigue.",
+        prevention: "Healthy diet, exercise, avoid sugar.",
+        treatment: "Insulin, oral meds, monitoring blood sugar."
       },
       heart: {
         title: "Heart Disease",
         icon: "https://img.icons8.com/color/96/heart-health.png",
-        desc: "A range of conditions that affect your heart, including blood vessel diseases.",
-        symptoms: "Chest pain, shortness of breath, fatigue.",
-        prevention: "Quit smoking, eat a heart-healthy diet, exercise regularly.",
-        treatment: "Medications, surgery, lifestyle changes."
+        desc: "A group of conditions that affect the heart.",
+        symptoms: "Chest pain, breathlessness, fatigue.",
+        prevention: "No smoking, healthy food, exercise.",
+        treatment: "Meds, surgery, lifestyle changes."
       },
       asthma: {
         title: "Asthma",
         icon: "https://img.icons8.com/color/96/asthma-inhaler.png",
-        desc: "A condition in which your airways narrow and swell and may produce extra mucus.",
-        symptoms: "Shortness of breath, chest tightness, wheezing, coughing.",
-        prevention: "Avoid triggers, use preventive medications, follow a treatment plan.",
-        treatment: "Inhalers, steroids, bronchodilators."
+        desc: "A condition that affects the lungs and breathing.",
+        symptoms: "Coughing, wheezing, breath shortness.",
+        prevention: "Avoid triggers, stay indoors on bad air days.",
+        treatment: "Inhalers, bronchodilators, steroids."
       },
       arthritis: {
         title: "Arthritis",
         icon: "https://img.icons8.com/color/96/joint-pain.png",
-        desc: "Inflammation of one or more of your joints, causing pain and stiffness.",
-        symptoms: "Joint pain, stiffness, swelling, decreased range of motion.",
-        prevention: "Maintain a healthy weight, avoid joint injuries, exercise.",
-        treatment: "Pain relievers, physical therapy, joint replacement in severe cases."
+        desc: "Joint inflammation causing stiffness and pain.",
+        symptoms: "Joint pain, stiffness, swelling.",
+        prevention: "Healthy weight, exercise, avoid injuries.",
+        treatment: "Pain meds, therapy, surgery."
+      },
+      covid: {
+        title: "COVID-19",
+        icon: "https://img.icons8.com/color/96/coronavirus.png",
+        desc: "Viral infection causing respiratory illness.",
+        symptoms: "Fever, cough, loss of taste/smell.",
+        prevention: "Masks, hand washing, distancing.",
+        treatment: "Rest, fluids, some antivirals."
+      },
+      flu: {
+        title: "Flu",
+        icon: "https://img.icons8.com/color/96/influenza.png",
+        desc: "Contagious virus causing cold-like symptoms.",
+        symptoms: "Fever, chills, sore throat.",
+        prevention: "Flu vaccine, hygiene.",
+        treatment: "Rest, fluids, antiviral meds."
+      },
+      hypertension: {
+        title: "Hypertension",
+        icon: "https://img.icons8.com/color/96/heart-with-pulse.png",
+        desc: "High blood pressure, a silent condition.",
+        symptoms: "Often none, maybe headaches.",
+        prevention: "Low salt diet, exercise.",
+        treatment: "BP-lowering medication."
+      },
+      cancer: {
+        title: "Breast Cancer",
+        icon: "https://img.icons8.com/color/96/breast-cancer.png",
+        desc: "Cancer in breast cells.",
+        symptoms: "Lump in breast, discharge, change in shape.",
+        prevention: "Regular checkups, healthy life.",
+        treatment: "Surgery, chemo, radiation."
+      },
+      dengue: {
+        title: "Dengue",
+        icon: "https://img.icons8.com/color/96/mosquito.png",
+        desc: "Mosquito-borne viral infection.",
+        symptoms: "Fever, rash, pain behind eyes.",
+        prevention: "Avoid mosquitoes, nets, repellents.",
+        treatment: "Fluids, rest, medical care."
+      },
+      malaria: {
+        title: "Malaria",
+        icon: "https://img.icons8.com/color/96/malaria.png",
+        desc: "Mosquito-spread parasite infection.",
+        symptoms: "Fever, chills, vomiting.",
+        prevention: "Mosquito nets, repellents.",
+        treatment: "Antimalarial drugs."
       }
     };
 
-    function openPopup(diseaseKey) {
-      const info = data[diseaseKey];
-      document.getElementById("popupTitle").innerText = info.title;
-      document.getElementById("popupIcon").src = info.icon;
-      document.getElementById("popupIcon").alt = info.title;
-      document.getElementById("descText").innerText = info.desc;
-      document.getElementById("symptomText").innerText = info.symptoms;
-      document.getElementById("preventText").innerText = info.prevention;
-      document.getElementById("treatText").innerText = info.treatment;
+    const grid = document.getElementById("diseaseGrid");
+    Object.keys(diseases).forEach(key => {
+      const d = diseases[key];
+      grid.innerHTML += `
+        <div class="card" onclick="openPopup('${key}')">
+          <img src="${d.icon}" alt="${d.title}" />
+          <h3>${d.title}</h3>
+        </div>
+      `;
+    });
+
+    function openPopup(key) {
+      const d = diseases[key];
+      document.getElementById("popupTitle").innerText = d.title;
+      document.getElementById("popupIcon").src = d.icon;
+      document.getElementById("descText").innerText = d.desc;
+      document.getElementById("symptomText").innerText = d.symptoms;
+      document.getElementById("preventText").innerText = d.prevention;
+      document.getElementById("treatText").innerText = d.treatment;
       document.getElementById("popupOverlay").style.display = "flex";
     }
 
