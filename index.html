@@ -5,10 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medical Homepage</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Ensure AI button does not overlap navbar */
+    .ai-btn-container {
+      top: 1rem;
+      right: 1rem;
+    }
+    @media (max-width: 768px) {
+      .ai-btn-container {
+        top: 4.5rem;
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-6 py-4 shadow-md">
+  <nav class="flex items-center justify-between px-6 py-4 shadow-md relative z-40">
     <div class="flex items-center space-x-2">
       <div class="text-blue-600 text-2xl font-bold">+ MEDICAL</div>
     </div>
@@ -24,17 +36,17 @@
     </div>
   </nav>
 
+  <!-- AI Button -->
+  <div class="fixed ai-btn-container z-30">
+    <button id="ai-btn" class="bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700">💡 AI</button>
+  </div>
+
   <!-- Mobile Nav Menu -->
   <div id="mobile-menu" class="hidden md:hidden px-6 py-2 space-y-2">
     <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
     <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
     <a href="#" class="block text-gray-700 hover:text-blue-600">Services</a>
     <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
-  </div>
-
-  <!-- AI Button -->
-  <div class="fixed top-5 right-5 z-50">
-    <button id="ai-btn" class="bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700">💡 AI</button>
   </div>
 
   <!-- Fullscreen AI Popup -->
