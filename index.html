@@ -8,35 +8,43 @@
 </head>
 <body class="bg-white text-gray-800 font-sans">
   <!-- Navbar -->
-  <!-- Navbar -->
-<nav class="flex items-center justify-between px-6 py-4 shadow-md bg-white">
-  <div class="flex items-center space-x-2">
-    <div class="text-blue-600 text-2xl font-bold">+ MEDiCAP</div>
+  <nav class="flex items-center justify-between px-6 py-4 shadow-md">
+    <div class="flex items-center space-x-2">
+      <div class="text-blue-600 text-2xl font-bold">+ MEDICAL</div>
+    </div>
+    <div class="space-x-6 hidden md:flex">
+      <a href="#" class="hover:text-blue-600">Home</a>
+      <a href="#" class="hover:text-blue-600">About</a>
+      <a href="#" class="hover:text-blue-600">Services</a>
+      <a href="#" class="hover:text-blue-600">Contact</a>
+    </div>
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-blue-600 focus:outline-none text-2xl">☰</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 py-2 space-y-2">
+    <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+    <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+    <a href="#" class="block text-gray-700 hover:text-blue-600">Services</a>
+    <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
   </div>
 
-  <!-- Mobile Menu Button -->
-  <button id="menu-toggle" class="md:hidden text-2xl text-blue-600 focus:outline-none">
-    ☰
-  </button>
-
-  <!-- Nav Links -->
-  <div id="menu" class="hidden md:flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0 absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent px-6 py-4 md:py-0 shadow md:shadow-none z-50">
-    <a href="#" class="hover:text-blue-600">Home</a>
-    <a href="#" class="hover:text-blue-600">About</a>
-    <a href="#" class="hover:text-blue-600">Services</a>
-    <a href="#" class="hover:text-blue-600">Contact</a>
+  <!-- AI Button -->
+  <div class="fixed top-5 right-5 z-50">
+    <button id="ai-btn" class="bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700">💡 AI</button>
   </div>
-</nav>
 
-<!-- Script for toggling menu -->
-<script>
-  const toggleBtn = document.getElementById('menu-toggle');
-  const menu = document.getElementById('menu');
-  toggleBtn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
-
+  <!-- Fullscreen AI Popup -->
+  <div id="ai-popup" class="hidden fixed inset-0 bg-white z-50 p-4 overflow-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold text-blue-700">AI Medical Assistant</h2>
+      <button id="close-ai" class="text-2xl text-red-500">&times;</button>
+    </div>
+    <iframe src="/chatbot.html" class="w-full h-[90vh] border rounded"></iframe>
+  </div>
 
   <!-- Announcement Banner -->
   <div class="bg-blue-500 text-white text-center py-2 text-sm">
@@ -48,7 +56,7 @@
     <div class="max-w-xl">
       <h1 class="text-3xl md:text-5xl font-bold text-blue-900">Your Health is Our Priority</h1>
       <p class="mt-3 text-gray-700">We provide the best medical care for you and your family.</p>
-      
+
       <!-- Search Bar -->
       <div class="mt-4 flex flex-col sm:flex-row gap-2">
         <input type="text" placeholder="Search..." class="w-full px-4 py-2 border rounded-md" />
@@ -68,11 +76,10 @@
       </div>
     </div>
 
-    <!-- Doctor Image -->
-   <div class="flex-1 mt-6 lg:mt-0">
-  <img src="https://raw.githubusercontent.com/Medicalproject-INdia/Medical-AI/main/doctor.png" alt="Doctor" class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm mx-auto" />
-</div>
-
+    <!-- Doctor Image (Always Visible) -->
+    <div class="flex-1 mt-6 md:mt-0">
+      <img src="https://raw.githubusercontent.com/Medicalproject-INdia/Medical-AI/main/doctor.png" alt="Doctor" class="w-full max-w-sm mx-auto" />
+    </div>
   </section>
 
   <!-- Diseases Section -->
@@ -92,46 +99,18 @@
     </ul>
   </section>
 
-  <!-- Floating AI Chatbot Button -->
-  <button id="chatbot-btn" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #2563EB;
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 999;
-  ">
-    💬
-  </button>
-
-  <!-- Chatbot Popup -->
-  <div id="chatbot-popup" style="
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    height: 400px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    display: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    z-index: 1000;
-  ">
-    <iframe src="chatbot.html" style="width:100%; height:100%; border:none;"></iframe>
-  </div>
-
+  <!-- Scripts -->
   <script>
-    const btn = document.getElementById("chatbot-btn");
-    const popup = document.getElementById("chatbot-popup");
-    btn.onclick = () => {
-      popup.style.display = popup.style.display === "none" ? "block" : "none";
+    document.getElementById("menu-toggle").onclick = () => {
+      const menu = document.getElementById("mobile-menu");
+      menu.classList.toggle("hidden");
+    };
+
+    document.getElementById("ai-btn").onclick = () => {
+      document.getElementById("ai-popup").classList.remove("hidden");
+    };
+    document.getElementById("close-ai").onclick = () => {
+      document.getElementById("ai-popup").classList.add("hidden");
     };
   </script>
 </body>
