@@ -20,21 +20,31 @@
 </head>
 <body class="bg-white text-gray-800 font-sans">
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-6 py-4 shadow-md relative z-40">
-    <div class="flex items-center space-x-2">
-      <div class="text-blue-600 text-2xl font-bold">+ MEDICAL</div>
-    </div>
-    <div class="space-x-6 hidden md:flex">
-      <a href="#" class="hover:text-blue-600">Home</a>
-      <a href="#" class="hover:text-blue-600">About</a>
-      <a href="#" class="hover:text-blue-600">Services</a>
-      <a href="#" class="hover:text-blue-600">Contact</a>
-    </div>
-    <!-- Mobile Menu Button -->
-    <div class="md:hidden">
-      <button id="menu-toggle" class="text-blue-600 focus:outline-none text-2xl">☰</button>
-    </div>
-  </nav>
+ <!-- Navbar -->
+<nav class="flex items-center justify-between px-6 py-4 shadow-md relative z-40">
+  <div class="flex items-center space-x-2">
+    <div class="text-blue-600 text-2xl font-bold">+ MEDICAL</div>
+  </div>
+  <div class="space-x-6 hidden md:flex">
+    <a href="index.html" class="hover:text-blue-600">Home</a>
+    <a href="disease-info.html" class="hover:text-blue-600">Disease Info</a>
+    <a href="#" class="hover:text-blue-600">Services</a>
+    <a href="#" class="hover:text-blue-600">Contact</a>
+  </div>
+  <!-- Mobile Menu Button -->
+  <div class="md:hidden">
+    <button id="menu-toggle" class="text-blue-600 focus:outline-none text-2xl">☰</button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Menu -->
+<div id="mobile-menu" class="hidden md:hidden px-6 py-2 space-y-2">
+  <a href="index.html" class="block text-gray-700 hover:text-blue-600">Home</a>
+  <a href="disease-info.html" class="block text-gray-700 hover:text-blue-600">Disease Info</a>
+  <a href="#" class="block text-gray-700 hover:text-blue-600">Services</a>
+  <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
+</div>
+
 
   <!-- AI Button -->
   <div class="fixed ai-btn-container z-30">
