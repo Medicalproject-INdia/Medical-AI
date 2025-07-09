@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a Doctor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6 bg-gray-50 text-center">
+  <h1 class="text-2xl font-bold mb-4 text-blue-700">Find a Doctor Near You</h1>
+  
+  <input id="location-input" type="text" placeholder="Enter your location (e.g. Delhi, Mumbai)" class="px-4 py-2 border rounded-md w-full max-w-md mb-4" />
+  <br>
+  <button onclick="searchDoctors()" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Search</button>
+
+  <script>
+    function searchDoctors() {
+      const location = document.getElementById('location-input').value;
+      if (location.trim() !== "") {
+        const query = `https://www.google.com/maps/search/doctor+near+${encodeURIComponent(location)}`;
+        window.open(query, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
