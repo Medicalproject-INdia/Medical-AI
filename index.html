@@ -6,34 +6,34 @@
   <title>Medical Homepage</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-
     .card::before {
-  content: "";
-  position: absolute;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
-  background: #d8eafe;
-  border-radius: 50%;
-  z-index: 0;
-}
+      content: "";
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 90px;
+      background: #d8eafe;
+      border-radius: 50%;
+      z-index: 0;
+    }
 
-.card img {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  position: relative;
-  z-index: 1;
-  margin-top: 10px;
-}
+    .card img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+    }
 
     /* Ensure AI button does not overlap navbar */
     .ai-btn-container {
-      top: 1rem;
-      right: 1rem;
+      top: 6.5rem;
+      right: 0rem;
     }
+
     @media (max-width: 768px) {
       .ai-btn-container {
         top: 4.5rem;
@@ -42,11 +42,11 @@
   </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
-  <!-- Navbar -->
- <!-- Navbar -->
+
+<!-- Navbar -->
 <nav class="flex items-center justify-between px-6 py-4 shadow-md relative z-40">
   <div class="flex items-center space-x-2">
-    <div class="text-blue-600 text-2xl font-bold">Ai Care+</div>
+    <div class="text-blue-600 text-2xl font-bold">+ MEDiCAP</div>
   </div>
   <div class="space-x-6 hidden md:flex">
     <a href="index.html" class="hover:text-blue-600">Home</a>
@@ -60,7 +60,7 @@
   </div>
 </nav>
 
-<!-- Mobile Nav Menu -->
+<!-- Mobile Nav Menu (only one - fixed) -->
 <div id="mobile-menu" class="hidden md:hidden px-6 py-2 space-y-2">
   <a href="index.html" class="block text-gray-700 hover:text-blue-600">Home</a>
   <a href="disease-info.html" class="block text-gray-700 hover:text-blue-600">Disease Info</a>
@@ -68,67 +68,48 @@
   <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
 </div>
 
+<!-- Announcement Banner -->
+<div class="bg-blue-500 text-white text-center py-2 text-sm">
+  🔔 The website is by PRIYANSHI TIWARI
+</div>
 
-  <!-- AI Button -->
-  <div class="fixed ai-btn-container z-30">
-    <button id="ai-btn" class="bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700">💡 AI</button>
-  </div>
+<!-- Hero Section -->
+<section class="p-6 md:flex items-center justify-between max-w-6xl mx-auto">
+  <div class="max-w-xl">
+    <h1 class="text-3xl md:text-5xl font-bold text-blue-900">Your Health is Our Priority</h1>
+    <p class="mt-3 text-gray-700">We provide the best medical care for you and your family.</p>
 
-  <!-- Mobile Nav Menu -->
-  <div id="mobile-menu" class="hidden md:hidden px-6 py-2 space-y-2">
-    <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
-    <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
-    <a href="#" class="block text-gray-700 hover:text-blue-600">Services</a>
-    <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
-  </div>
-
-  <!-- Fullscreen AI Popup -->
-  <div id="ai-popup" class="hidden fixed inset-0 bg-white z-50 p-4 overflow-auto">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold text-blue-700">AI Medical Assistant</h2>
-      <button id="close-ai" class="text-2xl text-red-500">&times;</button>
+    <!-- Search Bar -->
+    <div class="mt-4 flex flex-col sm:flex-row gap-2">
+      <input type="text" placeholder="Search..." class="w-full px-4 py-2 border rounded-md" />
+      <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Search</button>
     </div>
-    <iframe src="/chatbot.html" class="w-full h-[90vh] border rounded"></iframe>
-  </div>
 
-  <!-- Announcement Banner -->
-  <div class="bg-blue-500 text-white text-center py-2 text-sm">
-    🔔 New! Read our latest article
-  </div>
+    <!-- Options Box -->
+    <div class="mt-6 bg-blue-100 p-4 rounded-lg">
+      <div class="flex flex-col md:flex-row gap-4 justify-between">
+        <!-- Find a Doctor -->
+        <a href="find-doctor.html" class="flex-1 bg-white p-4 rounded-lg text-center hover:bg-blue-50 transition">
+          <div class="text-3xl mb-2">👨‍⚕️</div>
+          <div class="font-semibold text-blue-800">Find a Doctor</div>
+        </a>
 
-  <!-- Hero Section -->
-  <section class="p-6 md:flex items-center justify-between max-w-6xl mx-auto">
-    <div class="max-w-xl">
-      <h1 class="text-3xl md:text-5xl font-bold text-blue-900">Your Health is Our Priority</h1>
-      <p class="mt-3 text-gray-700">We provide the best medical care for you and your family.</p>
-
-      <!-- Search Bar -->
-      <div class="mt-4 flex flex-col sm:flex-row gap-2">
-        <input type="text" placeholder="Search..." class="w-full px-4 py-2 border rounded-md" />
-        <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Search</button>
-      </div>
-
-      <!-- Options -->
-      <div class="flex gap-4 mt-6">
-        <div class="flex-1 p-4 bg-blue-100 rounded-lg text-center">
-          <div class="text-2xl mb-2">👨‍⚕️</div>
-          <div class="font-semibold">Find a Doctor</div>
-        </div>
-        <div class="flex-1 p-4 bg-blue-100 rounded-lg text-center">
-          <div class="text-2xl mb-2">🏠</div>
-          <div class="font-semibold">Book an Appointment</div>
-        </div>
+        <!-- Book an Appointment -->
+        <a href="book-appointment.html" class="flex-1 bg-white p-4 rounded-lg text-center hover:bg-blue-50 transition">
+          <div class="text-3xl mb-2">🏠</div>
+          <div class="font-semibold text-blue-800">Book an Appointment</div>
+        </a>
       </div>
     </div>
+  </div>
 
-    <!-- Doctor Image (Always Visible) -->
-    <div class="flex-1 mt-6 md:mt-0">
-      <img src="https://raw.githubusercontent.com/Medicalproject-INdia/Medical-AI/main/doctor.png" alt="Doctor" class="w-full max-w-sm mx-auto" />
-    </div>
-  </section>
+  <!-- Doctor Image -->
+  <div class="flex-1 mt-6 md:mt-0">
+    <img src="https://raw.githubusercontent.com/Medicalproject-INdia/Medical-AI/main/doctor.png" alt="Doctor" class="w-full max-w-sm mx-auto" />
+  </div>
+</section>
 
-  <!-- Diseases Section -->
-
+<!-- Diseases Section -->
 <section class="bg-blue-100 py-6 px-4">
   <h2 class="text-2xl font-bold text-blue-800 mb-4">Diseases</h2>
   <ul class="list-disc pl-6 text-gray-700 space-y-1">
@@ -145,20 +126,41 @@
   </ul>
 </section>
 
+<!-- AI Chat Button -->
+<div class="fixed bottom-4 right-4 z-50">
+  <button id="ai-btn" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 text-xl">
+    💬
+  </button>
+</div>
 
-  <!-- Scripts -->
-  <script>
-    document.getElementById("menu-toggle").onclick = () => {
-      const menu = document.getElementById("mobile-menu");
-      menu.classList.toggle("hidden");
-    };
+<!-- Small AI Chat Popup -->
+<div id="ai-popup" class="hidden fixed bottom-20 right-4 w-[90%] max-w-md bg-white border border-gray-300 rounded-lg shadow-xl z-50">
+  <div class="flex justify-between items-center p-3 border-b bg-blue-100 rounded-t-lg">
+    <h2 class="font-semibold text-blue-800">AI Medical Chat</h2>
+    <button id="close-ai" class="text-xl text-red-500">&times;</button>
+  </div>
+  <iframe src="chatbot.html" class="w-full h-[400px] rounded-b-lg border-0"></iframe>
+</div>
 
-    document.getElementById("ai-btn").onclick = () => {
-      document.getElementById("ai-popup").classList.remove("hidden");
-    };
-    document.getElementById("close-ai").onclick = () => {
-      document.getElementById("ai-popup").classList.add("hidden");
-    };
-  </script>
+<!-- JavaScript (Mobile Menu + AI Button) -->
+<script>
+  document.getElementById("menu-toggle").onclick = () => {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+  };
+
+  const aiBtn = document.getElementById("ai-btn");
+  const aiPopup = document.getElementById("ai-popup");
+  const closeAi = document.getElementById("close-ai");
+
+  aiBtn.addEventListener("click", () => {
+    aiPopup.classList.remove("hidden");
+  });
+
+  closeAi.addEventListener("click", () => {
+    aiPopup.classList.add("hidden");
+  });
+</script>
+
 </body>
 </html>
