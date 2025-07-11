@@ -79,11 +79,13 @@
     <h1 class="text-3xl md:text-5xl font-bold text-blue-900">Your Health is Our Priority</h1>
     <p class="mt-3 text-gray-700">We provide the best medical care for you and your family.</p>
 
-    <!-- Search Bar -->
-    <div class="mt-4 flex flex-col sm:flex-row gap-2">
-      <input type="text" placeholder="Search..." class="w-full px-4 py-2 border rounded-md" />
-      <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Search</button>
-    </div>
+    <!-- AI Assistant Button replacing search bar -->
+<div class="mt-4">
+  <a href="chatbot.html" class="block bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-3 rounded-md text-lg font-semibold w-full">
+    Your Personal Assistant Helper AI
+  </a>
+</div>
+
 
     <!-- Options Box -->
     <div class="mt-6 bg-blue-100 p-4 rounded-lg">
@@ -109,22 +111,11 @@
   </div>
 </section>
 
-<!-- Diseases Section -->
-<section class="bg-blue-100 py-6 px-4">
-  <h2 class="text-2xl font-bold text-blue-800 mb-4">Diseases</h2>
-  <ul class="list-disc pl-6 text-gray-700 space-y-1">
-    <li>Diabetes</li>
-    <li>asthma</li>
-    <li>Heart Disease</li>
-    <li>COVID-19</li>
-    <li>Flu</li>
-    <li>Hypertension</li>
-    <li>Breast Cancer</li>
-    <li>Arthritis</li>
-    <li>Dengue</li>
-    <li>Malaria</li>
-  </ul>
+<!-- Disease Section loaded from external file -->
+<section class="mt-10">
+  <iframe src="disease-info2.html" style="width: 100%; height: 1000px; border: none;" loading="lazy"></iframe>
 </section>
+
 
 <!-- AI Chat Button -->
 <div class="fixed bottom-4 right-4 z-50">
